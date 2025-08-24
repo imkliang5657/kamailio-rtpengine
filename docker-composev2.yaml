@@ -1,0 +1,29 @@
+version: "3.9"
+networks:
+ miller_network:
+        driver: bridge
+        ipam:
+                config:
+                        - subnet: 10.0.5.0/24
+                          gateway: 10.0.5.1
+
+services:
+  kamailio:
+          #restart: always
+    #  network_mode: "host"
+    privileged: true
+    container_name: kamailio
+    build: ./config_kamailio
+
+    ports:
+       - "5060:5060/udp"
+       - "5060:5060"
+    networks:
+        miller_network:
+            ipv4_address: 10.0.5.5
+    volumes:
+      - kamailio:/etc/kamailio
+      - db:/var/lib/mysql
+volumes:
+        kamailio:
+        db:

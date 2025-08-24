@@ -1,0 +1,62 @@
+version: "3.9"
+networks:
+ miller_network:
+        driver: bridge
+        ipam:
+                config:
+                        - subnet: 10.0.5.0/24
+                          gateway: 10.0.5.1
+
+services:
+  kamailio:
+          #restart: always
+    #  network_mode: "host"
+    privileged: true
+    container_name: kamailio
+    build: ./config_kamailio
+    
+    ports:
+       - "5060:5060/udp"
+       - "5060:5060"
+    networks:
+        miller_network:
+            ipv4_address: 10.0.5.5
+    volumes:     
+      - kamailio:/etc/kamailio
+      - db:/var/lib/mysql
+    depends_on:
+      - rtpengine1
+      - rtpengine2
+  rtpengine1:
+          # restart: always
+    # network_mode: "host"
+    privileged: true
+    container_name: rtpengine1
+    build: ./new_rtp
+    expose:
+        - "2223/udp"
+    ports:
+        - "30000-30500:30000-30500/udp"
+    networks:
+        miller_network:
+           ipv4_address: 10.0.5.6
+    volumes:
+      - rtpengine:/etc/rtpengine
+  rtpengine2:
+    privileged: true
+    container_name: rtpengine2
+    build: ./new_rtp1
+    expose:
+        - "2224/udp"
+    ports:
+        - "20201-20400:20201-20400/udp"
+    networks:
+        miller_network:
+           ipv4_address: 10.0.5.7
+    volumes:
+      - rtpengine2:/etc/rtpengine
+volumes:
+  kamailio:
+  rtpengine:
+  rtpengine2:
+  db:

@@ -1,0 +1,32 @@
+INVITE sip:ken@172.20.10.3:54890;transport=udp SIP/2.0
+Record-Route: <sip:;r2=on;lr;ftag=01caf76b;did=c5a.55a1;nat=yes>
+Record-Route: <sip:163.22.22.61;transport=tcp;r2=on;lr;ftag=01caf76b;did=c5a.55a1;nat=yes>
+Via: SIP/2.0/TCP 10.41.3.142:51163;branch=z9hG4bK-524287-1---e2306335ca3ccffc;rport
+Max-Forwards: 69
+Contact: <sip:john@27.53.128.29:29215;transport=TCP;alias=27.53.128.29~29215~2>
+To: <sip:ken@163.22.22.61>
+From: <sip:john@163.22.22.61;transport=TCP>;tag=01caf76b
+Call-ID: xI0yQ2SeWpaTQL2nNyhgvw..
+CSeq: 1 INVITE
+Allow: INVITE, ACK, CANCEL, BYE, NOTIFY, REFER, MESSAGE, OPTIONS, INFO, SUBSCRIBE
+Content-Type: application/sdp
+Supported: replaces, norefersub, extended-refer, timer, sec-agree, outbound, path, X-cisco-serviceuri
+User-Agent: Zoiper v2.10.20.4_1
+Allow-Events: presence, kpml, talk, as-feature-event
+Content-Length: 291
+
+v=0
+o=Z 0 491074253 IN IP4 163.22.22.61
+s=Z
+c=IN IP4 163.22.22.61
+t=0 0
+m=audio 30118 RTP/AVP 3 101 110 97
+a=rtpmap:3 GSM/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-16
+a=rtpmap:110 speex/8000
+a=rtpmap:97 iLBC/8000
+a=fmtp:97 mode=20
+a=sendrecv
+a=rtcp:30119
+a=rtcp-mux

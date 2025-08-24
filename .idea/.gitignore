@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/.idea/
+/inspectionProfiles/
+../masterCode/
+../config_kamailio/webrtc/sandbox
+../config_kamailio/logrotate/kamailio

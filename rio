@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+co -l $1
+vim $1
+ci $1
+co $1
