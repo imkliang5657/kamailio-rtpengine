@@ -1,5 +1,5 @@
 #Kamailio Base image
-FROM project/kamailiov3:latest
+FROM miller112321507/kamailio:3.0
 #Configuration files
 #COPY kamailio-simple.cfg /etc/kamailio/kamailio-simple.cfg
 #Configuration files using websocket
